@@ -1,6 +1,15 @@
 #!/usr/bin/perl
 
 
+#####################################
+#
+#
+#
+#	Created On: 01/16/23 - 
+#
+#
+#####################################
+
 use strict;
 use Data::Dumper;
 
@@ -55,8 +64,8 @@ sub get_table_data {
 					a.completion_date,
 					a.job_status
 				from 
-					jobs a,
-					customers b
+					Cas_SOC.dbo.jobs a,
+					Cas_SOC.dbo.customers b
 				where 
 					a.customer_no = b.customer_no
 	};
@@ -146,7 +155,7 @@ sub insert_test_data
 ##Get the GL division data
 sub get_gl_divisions {
 
-	my $sql = q{ select company_no, division_account_no, description, short_desc, record_status, row_modified_on from gl_divisions };
+	my $sql = q{ select company_no, division_account_no, description, short_desc, record_status, row_modified_on from Cas_SOC.dbo.gl_divisions };
 
 	my $sth = $FOUNDATION_CN->prepare( $sql ) or die "Can't prepare statement: $DBI::errstr";
 	$sth->execute();
